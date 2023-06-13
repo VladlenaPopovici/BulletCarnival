@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovementInput();
         HandleJumpInput();
-        // HandleRunInput();
+        HandleRunInput();
 
         ApplyGravity();
     }
@@ -52,10 +52,18 @@ public class PlayerController : MonoBehaviour
         _characterController.Move(_velocity * Time.deltaTime);
     }
 
-    // private void HandleRunInput()
-    // {
-    //     
-    // }
+    private void HandleRunInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed *= runSpeedMultiplier;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed /= runSpeedMultiplier;
+        }
+    }
 
     private void ApplyGravity()
     {
