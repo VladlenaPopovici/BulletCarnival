@@ -19,7 +19,7 @@ FPS Shooter game with a 3rd person camera view for PC
     - [ ] Environment: boxes, walls
 
 ### Features
-- [ ] Player movement (WASD, Shift, Space)
+- [x] Player movement (WASD, Shift, Space)
 - [ ] Mouse aiming
 - [ ] Create enemies(hp, tracking based on detect zone, attacking: meelee, shoot* based on weapon)
 - [ ] Shooting mechanic via Raycast
