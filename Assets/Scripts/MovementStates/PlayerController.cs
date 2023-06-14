@@ -34,7 +34,7 @@ namespace MovementStates
         void Start()
         {
             _characterController = GetComponent<CharacterController>();
-            animator = GetComponentInChildren<Animator>();
+            animator = GetComponent<Animator>();
             SwitchStates(Idle);
         }
 

@@ -1,8 +1,6 @@
-using System;
 using AimStates.States;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace AimStates
 {
@@ -14,8 +12,8 @@ namespace AimStates
         private float _yAxis;
 
         private AimingBaseState _currentState;
-        public AimingState Aiming = new();
-        public ShootState Shoot = new();
+        public readonly AimingState Aiming = new();
+        public readonly ShootState Shoot = new();
 
         [HideInInspector] public Animator animator;
         [HideInInspector] public CinemachineVirtualCamera virtualCamera;
@@ -23,13 +21,16 @@ namespace AimStates
         [HideInInspector] public float currentFov;
         public float adsFov = 40;
         public float fovSmoothSpeed = 10;
-        
+
+        [SerializeField] private Transform aimPosition;
+        [SerializeField] private float aimSmoothSpeed = 20;
+        [SerializeField] private LayerMask aimMask;
 
         private void Start()
         {
             virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
             shootFov = virtualCamera.m_Lens.FieldOfView;
-            animator = GetComponentInChildren<Animator>();
+            animator = GetComponent<Animator>();
             SwitchStates(Shoot);
         }
 
@@ -42,6 +43,13 @@ namespace AimStates
 
             virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, currentFov,
                 fovSmoothSpeed * Time.deltaTime);
+
+            var screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+            var ray = Camera.main!.ScreenPointToRay(screenCenter);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
+            {
+                aimPosition.position = Vector3.Lerp(aimPosition.position, hit.point, aimSmoothSpeed * Time.deltaTime);
+            }
 
             _currentState.UpdateState(this);
         }
