@@ -14,7 +14,7 @@ namespace MovementStates.States
         public override void UpdateState(PlayerController movement)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift)) ExitState(movement, movement.Running);
-            else if (movement.movement.magnitude < 0.1f) ExitState(movement, movement.Idle);
+            else if (movement.movement.sqrMagnitude < 0.1f) ExitState(movement, movement.Idle);
         }
 
         private void ExitState(PlayerController movement, MovementBasicStates state)
