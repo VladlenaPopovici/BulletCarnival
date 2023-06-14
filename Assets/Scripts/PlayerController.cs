@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private void HandleJumpInput()
     {
         if (!Input.GetKeyDown(KeyCode.Space) || !IsGrounded()) return;
+        Debug.Log("Jump2");
 
         _velocity.y += jumpForce;
         _characterController.Move(_velocity * Time.deltaTime);
