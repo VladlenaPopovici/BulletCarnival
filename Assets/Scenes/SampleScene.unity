@@ -170,7 +170,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.4
+  m_Height: 1.5
   m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -198,7 +198,7 @@ MonoBehaviour:
   jumpForce: 5
   runSpeedMultiplier: 2
   movement: {x: 0, y: 0, z: 0}
-  Animator: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &62018765
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,11 +4,11 @@ namespace MovementStates.States
 {
     public class WalkingState : MovementBasicStates
     {
-        private static readonly int IsWalkingPistol = Animator.StringToHash("IsWalkingPistol");
+        private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
         public override void EnterState(PlayerController movement)
         {
-            movement.animator.SetBool(IsWalkingPistol, true);
+            movement.animator.SetBool(IsWalking, true);
         }
 
         public override void UpdateState(PlayerController movement)
@@ -19,7 +19,7 @@ namespace MovementStates.States
 
         private void ExitState(PlayerController movement, MovementBasicStates state)
         {
-            movement.animator.SetBool(IsWalkingPistol, false);
+            movement.animator.SetBool(IsWalking, false);
             movement.SwitchStates(state);
         }
     }
