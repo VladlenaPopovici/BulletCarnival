@@ -1,5 +1,6 @@
 using System;
 using AimStates.States;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,9 +18,17 @@ namespace AimStates
         public ShootState Shoot = new();
 
         [HideInInspector] public Animator animator;
+        [HideInInspector] public CinemachineVirtualCamera virtualCamera;
+        [HideInInspector] public float shootFov;
+        [HideInInspector] public float currentFov;
+        public float adsFov = 40;
+        public float fovSmoothSpeed = 10;
+        
 
         private void Start()
         {
+            virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+            shootFov = virtualCamera.m_Lens.FieldOfView;
             animator = GetComponentInChildren<Animator>();
             SwitchStates(Shoot);
         }
@@ -30,6 +39,9 @@ namespace AimStates
             _yAxis -= Input.GetAxisRaw("Mouse Y") * mouseSense;
 
             _yAxis = Mathf.Clamp(_yAxis, -80, 80);
+
+            virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, currentFov,
+                fovSmoothSpeed * Time.deltaTime);
 
             _currentState.UpdateState(this);
         }

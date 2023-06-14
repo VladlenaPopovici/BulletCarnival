@@ -9,6 +9,7 @@ namespace AimStates.States
         public override void EnterState(CameraController aim)
         {
             aim.animator.SetBool(IsAiming, true);
+            aim.currentFov = aim.adsFov;
         }
 
         public override void UpdateState(CameraController aim)
