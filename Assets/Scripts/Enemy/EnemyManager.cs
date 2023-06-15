@@ -9,9 +9,11 @@ namespace Enemy
     {
         [SerializeField] private GameObject player;
         [SerializeField] private float damage = 20;
+        [SerializeField] private float health = 60;
         private Animator _animator;
 
         private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
+        private static readonly int Dead = Animator.StringToHash("Dead");
 
         void Start()
         {
@@ -34,6 +36,18 @@ namespace Enemy
             else
             {
                 _animator.SetBool(IsAttacking, false);
+            }
+        }
+
+        public void Hit(float damageEnemy)
+        {
+            health -= damageEnemy;
+
+            if (health <= 0)
+            {
+                _animator.SetTrigger(Dead);
+                
+                Destroy(gameObject, 5);
             }
         }
     }

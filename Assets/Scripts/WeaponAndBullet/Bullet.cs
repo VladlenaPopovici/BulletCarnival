@@ -8,6 +8,7 @@ namespace WeaponAndBullet
     {
         [SerializeField] private float timeToDestroy;
         [HideInInspector] public WeaponManager weapon;
+        private EnemyManager _enemyManager;
 
         private void Start()
         {
@@ -16,10 +17,9 @@ namespace WeaponAndBullet
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponentInParent<EnemyHealth>())
+            if (collision.gameObject.GetComponent<EnemyManager>())
             {
-                var enemyHealth = collision.gameObject.GetComponentInParent<EnemyHealth>();
-                enemyHealth.TakeDamage(weapon.damage);
+                
             }
             Destroy(gameObject);
         }

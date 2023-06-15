@@ -1,5 +1,6 @@
 using ActionStates;
 using AimStates;
+using Enemy;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -27,6 +28,8 @@ namespace WeaponAndBullet
         private ParticleSystem _muzzleFlashParticles;
         private float _lightIntensity;
         [SerializeField] private float lightReturnSpeed = 20;
+
+        private EnemyManager _enemyManager;
     
         void Start()
         {
@@ -67,16 +70,24 @@ namespace WeaponAndBullet
             _weaponRecoil.TriggerRecoil();
             TriggerMuzzleFlash();
             _weaponAmmo.currentAmmo--;
-        
-            for (int i = 0; i < bulletPerShot; i++)
-            {
-                var currentBullet = Instantiate(bulletPrefab, barrelPosition.position, barrelPosition.rotation);
 
-                var bulletScript = currentBullet.GetComponent<Bullet>();
-                bulletScript.weapon = this;
+            if (Physics.Raycast(barrelPosition.position, transform.forward, out RaycastHit hit, 100))
+            {
+                _enemyManager = hit.transform.GetComponent<EnemyManager>();
+                if (_enemyManager != null)
+                {
+                    _enemyManager.Hit(damage);
+                }
+                for (int i = 0; i < bulletPerShot; i++)
+                {
+                    var currentBullet = Instantiate(bulletPrefab, barrelPosition.position, barrelPosition.rotation);
+
+                    var bulletScript = currentBullet.GetComponent<Bullet>();
+                    bulletScript.weapon = this;
                 
-                var rigidBody = currentBullet.GetComponent<Rigidbody>();
-                rigidBody.AddForce(barrelPosition.forward * bulletVelocity, ForceMode.Impulse);
+                    var rigidBody = currentBullet.GetComponent<Rigidbody>();
+                    rigidBody.AddForce(barrelPosition.forward * bulletVelocity, ForceMode.Impulse);
+                }
             }
         }
 

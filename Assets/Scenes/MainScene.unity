@@ -22539,7 +22539,6 @@ GameObject:
   - component: {fileID: 1462260443}
   - component: {fileID: 1462260442}
   - component: {fileID: 1462260441}
-  - component: {fileID: 1462260440}
   - component: {fileID: 1462260445}
   - component: {fileID: 1462260444}
   - component: {fileID: 1462260446}
@@ -22550,19 +22549,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1462260440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462260439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ba8a4734c371f4a8ba989f74621045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!136 &1462260441
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22574,9 +22560,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
-  m_Height: 1.4
+  m_Height: 0.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Center: {x: 0, y: 0.94, z: 0}
 --- !u!95 &1462260442
 Animator:
   serializedVersion: 5
@@ -22624,7 +22610,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 0.2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -22632,7 +22618,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -22650,6 +22636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 465249744}
   damage: 20
+  health: 60
 --- !u!54 &1462260446
 Rigidbody:
   m_ObjectHideFlags: 0
