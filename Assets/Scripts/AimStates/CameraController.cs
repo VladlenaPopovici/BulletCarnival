@@ -22,7 +22,7 @@ namespace AimStates
         public float adsFov = 40;
         public float fovSmoothSpeed = 10;
 
-        [SerializeField] private Transform aimPosition;
+        public Transform aimPosition;
         [SerializeField] private float aimSmoothSpeed = 20;
         [SerializeField] private LayerMask aimMask;
 
