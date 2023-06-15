@@ -1,4 +1,5 @@
 using System;
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,8 +8,9 @@ namespace Enemy
     public class EnemyManager : MonoBehaviour
     {
         [SerializeField] private GameObject player;
+        [SerializeField] private float damage = 20;
         private Animator _animator;
-        
+
         private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
 
         void Start()
@@ -26,6 +28,7 @@ namespace Enemy
         {
             if (collision.gameObject == player)
             {
+                player.GetComponent<PlayerManager>().Hit(damage);
                 _animator.SetBool(IsAttacking, true);
             }
             else

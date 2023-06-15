@@ -8,8 +8,8 @@ namespace AimStates
     {
         [SerializeField] private Transform cameraFollowPosition;
         [SerializeField] private float mouseSense = 1f;
-        private float _xAxis;
-        private float _yAxis;
+        [HideInInspector] public float _xAxis;
+        [HideInInspector] public float _yAxis;
 
         private AimingBaseState _currentState;
         public readonly AimingState Aiming = new();
