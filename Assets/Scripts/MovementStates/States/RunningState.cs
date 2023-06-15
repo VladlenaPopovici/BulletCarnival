@@ -15,6 +15,11 @@ namespace MovementStates.States
         {
             if (Input.GetKeyUp(KeyCode.LeftShift)) ExitState(movement, movement.Walking);
             else if (movement.movement.sqrMagnitude < 0.1f) ExitState(movement, movement.Idle);
+            
+            if (!Input.GetKeyDown(KeyCode.Space)) return;
+            
+            movement.PreviousState = this;
+            ExitState(movement, movement.Jumping);
         }
         
         private void ExitState(PlayerController movement, MovementBasicStates state)

@@ -14,6 +14,11 @@ namespace MovementStates.States
             
             if (Input.GetKeyDown(KeyCode.LeftShift)) movement.SwitchStates(movement.Running);
             else movement.SwitchStates(movement.Walking);
+
+            if (!Input.GetKeyDown(KeyCode.Space)) return;
+            
+            movement.PreviousState = this;
+            movement.SwitchStates(movement.Jumping);
         }
     }
 }
