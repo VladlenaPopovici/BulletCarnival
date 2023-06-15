@@ -881,9 +881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f964e8478d453594c88ff2f486ce08bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 8996748017076658261, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
   damage: 20
   health: 60
+  deadEnemyCount: 0
 --- !u!195 &4946643526447637072
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -894,7 +895,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.2
+  m_Speed: 0.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

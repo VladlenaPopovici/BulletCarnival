@@ -1,4 +1,3 @@
-using System;
 using Player;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,16 +13,18 @@ namespace Enemy
 
         private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
         private static readonly int Dead = Animator.StringToHash("Dead");
+        private NavMeshAgent _navMeshAgent;
 
         void Start()
         {
             player = GameObject.FindWithTag("Player");
             _animator = GetComponent<Animator>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         void Update()
         {
-            GetComponent<NavMeshAgent>().destination = player.transform.position;
+            _navMeshAgent.destination = player.transform.position;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -43,12 +44,16 @@ namespace Enemy
         {
             health -= damageEnemy;
 
-            if (health <= 0)
-            {
-                _animator.SetTrigger(Dead);
+            if (health > 0) return;
+
+            KillMouse();
+        }
+
+        private void KillMouse()
+        {
+            _animator.SetTrigger(Dead);
                 
-                Destroy(gameObject, 5);
-            }
+            Destroy(gameObject, 5);
         }
     }
 }
