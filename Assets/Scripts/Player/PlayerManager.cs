@@ -1,5 +1,4 @@
-using AimStates;
-using Cinemachine;
+using SaveSystem;
 using UnityEngine;
 
 namespace Player
@@ -9,16 +8,6 @@ namespace Player
         [SerializeField] private float health;
         [SerializeField] private Canvas loseCanvas;
         
-        void Start()
-        {
-            
-        }
-
-        void Update()
-        {
-        
-        }
-
         public void Hit(float damage)
         {
             health -= damage;
@@ -31,6 +20,7 @@ namespace Player
 
         private void LoseGameUI()
         {
+            GameSavesManager.GetInstance().SaveLose();
             Cursor.visible = true;
             Time.timeScale = 0;
             loseCanvas.gameObject.SetActive(true);

@@ -1,18 +1,16 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Enemy;
+using SaveSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Canvas winCanvas;
-    
-    private List<GameObject> _enemies = new();
 
+    private List<GameObject> _enemies = new();
 
     void Start()
     {
@@ -44,5 +42,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         winCanvas.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        
+        GameSavesManager.GetInstance().SaveWin();
     }
 }

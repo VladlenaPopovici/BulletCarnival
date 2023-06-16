@@ -15,5 +15,10 @@ namespace UI
             Application.Quit();
             Debug.Log("Quit");
         }
+
+        public void ResultButton()
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }
