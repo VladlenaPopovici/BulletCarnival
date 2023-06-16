@@ -1,3 +1,4 @@
+using System;
 using Player;
 using UnityEngine;
 using UnityEngine.AI;
@@ -36,7 +37,11 @@ namespace Enemy
                 player.GetComponent<PlayerManager>().Hit(damage);
                 _animator.SetBool(IsAttacking, true);
             }
-            else
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject)
             {
                 _animator.SetBool(IsAttacking, false);
             }
@@ -49,7 +54,7 @@ namespace Enemy
             if (health > 0)
             {
                 _animator.SetTrigger(TakeDamage);
-
+                
                 _animator.SetBool(IsWalking, true);
                 return;
             }

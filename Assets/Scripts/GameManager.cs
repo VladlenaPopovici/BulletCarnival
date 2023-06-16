@@ -46,7 +46,9 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        
-        GameSavesManager.GetInstance().SaveWin();
+        if (AllEnemiesDead())
+        {
+            GameSavesManager.GetInstance().SaveWin();
+        }
     }
 }

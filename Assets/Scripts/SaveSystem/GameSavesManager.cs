@@ -35,9 +35,7 @@ namespace SaveSystem
         {
             var gameSummaries = LoadFromJson().data;
             var wins = gameSummaries.Count(x => x.isWin);
-            Debug.Log($"wins: {wins}");
             var loses = gameSummaries.Count(x => !x.isWin);
-            Debug.Log($"loses: {loses}");
 
             return new Totals()
             {
