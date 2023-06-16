@@ -15,6 +15,7 @@ namespace Enemy
         private static readonly int Dead = Animator.StringToHash("Dead");
         private NavMeshAgent _navMeshAgent;
         private static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
+        private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
         void Start()
         {
@@ -45,9 +46,14 @@ namespace Enemy
         {
             health -= damageEnemy;
 
-            if (health > 0) return;
+            if (health > 0)
+            {
+                _animator.SetTrigger(TakeDamage);
+
+                _animator.SetBool(IsWalking, true);
+                return;
+            }
             
-            _animator.SetTrigger(TakeDamage);
 
             KillMouse();
         }

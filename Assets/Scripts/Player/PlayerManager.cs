@@ -1,3 +1,5 @@
+using AimStates;
+using Cinemachine;
 using UnityEngine;
 
 namespace Player
@@ -9,7 +11,7 @@ namespace Player
         
         void Start()
         {
-        
+            
         }
 
         void Update()
@@ -29,6 +31,7 @@ namespace Player
 
         private void LoseGameUI()
         {
+            Cursor.visible = true;
             Time.timeScale = 0;
             loseCanvas.gameObject.SetActive(true);
         }

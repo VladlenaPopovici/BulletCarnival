@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         foreach (var spawnPoint in spawnPoints)
         {
             var enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     private void WinGameUI()
     {
         Time.timeScale = 0;
+        Cursor.visible = true;
         winCanvas.gameObject.SetActive(true);
     }
 }
