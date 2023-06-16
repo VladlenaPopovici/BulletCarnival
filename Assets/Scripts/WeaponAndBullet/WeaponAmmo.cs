@@ -6,6 +6,7 @@ namespace WeaponAndBullet
     {
         public int clipSize;
         public int extraAmmo;
+
         [HideInInspector] public int currentAmmo;
     
         void Start()

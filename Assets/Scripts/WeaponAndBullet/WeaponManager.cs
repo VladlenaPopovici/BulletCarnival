@@ -1,8 +1,6 @@
-using ActionStates;
 using AimStates;
 using Enemy;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace WeaponAndBullet
 {
@@ -21,7 +19,6 @@ namespace WeaponAndBullet
         private CameraController _aim;
 
         private WeaponAmmo _weaponAmmo;
-        private ActionStateManager _actions;
         private WeaponRecoil _weaponRecoil;
 
         private Light _muzzleFlashLight;
@@ -30,18 +27,21 @@ namespace WeaponAndBullet
         [SerializeField] private float lightReturnSpeed = 20;
 
         private EnemyManager _enemyManager;
-    
+
+        [SerializeField] private Animator animator;
+        private static readonly int Reload1 = Animator.StringToHash("Reload");
+
         void Start()
         {
             _weaponRecoil = GetComponent<WeaponRecoil>();
             _aim = GetComponentInParent<CameraController>();
             _weaponAmmo = GetComponent<WeaponAmmo>();
-            _actions = GetComponentInParent<ActionStateManager>();
             _muzzleFlashLight = GetComponentInChildren<Light>();
             _lightIntensity = _muzzleFlashLight.intensity;
             _muzzleFlashLight.intensity = 0;
             _muzzleFlashParticles = GetComponentInChildren<ParticleSystem>();
-        
+            animator = GetComponentInParent<Animator>();
+
             _fireRateTimer = fireRate;
         }
 
@@ -50,14 +50,16 @@ namespace WeaponAndBullet
             if(ShouldFire()) Fire();
 
             _muzzleFlashLight.intensity = Mathf.Lerp(_muzzleFlashLight.intensity, 0, lightReturnSpeed * Time.deltaTime);
+            
+            Reload();
         }
 
         private bool ShouldFire()
         {
             _fireRateTimer += Time.deltaTime;
-            if (_fireRateTimer < fireRate) return false;
             if (_weaponAmmo.currentAmmo == 0) return false;
-            if (_actions.CurrentState == _actions.ReloadState) return false;
+            if (_fireRateTimer < fireRate) return false;
+            if (ReloadAnimationInProgress()) return false;
             if (semiAuto && Input.GetKeyDown(KeyCode.Mouse0)) return true;
             if (!semiAuto && Input.GetKey(KeyCode.Mouse0)) return true;
             return false;
@@ -78,7 +80,7 @@ namespace WeaponAndBullet
                 {
                     _enemyManager.Hit(damage);
                 }
-                for (int i = 0; i < bulletPerShot; i++)
+                for (var i = 0; i < bulletPerShot; i++)
                 {
                     var currentBullet = Instantiate(bulletPrefab, barrelPosition.position, barrelPosition.rotation);
 
@@ -95,6 +97,25 @@ namespace WeaponAndBullet
         {
             _muzzleFlashParticles.Play();
             _muzzleFlashLight.intensity = _lightIntensity;
+        }
+
+        private void Reload()
+        {
+            if (!FullAmmo() && !ReloadAnimationInProgress() && Input.GetKeyDown(KeyCode.R))
+            {
+                animator.SetTrigger(Reload1);
+            }
+        }
+
+        private bool FullAmmo()
+        {
+            return _weaponAmmo.currentAmmo == _weaponAmmo.clipSize;
+        }
+
+        private bool ReloadAnimationInProgress()
+        {
+            var isName = animator.GetCurrentAnimatorStateInfo(1).IsName("RIfle Reload");
+            return isName;
         }
     }
 }
