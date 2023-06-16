@@ -14,6 +14,7 @@ namespace Enemy
         private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
         private static readonly int Dead = Animator.StringToHash("Dead");
         private NavMeshAgent _navMeshAgent;
+        private static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
 
         void Start()
         {
@@ -45,12 +46,16 @@ namespace Enemy
             health -= damageEnemy;
 
             if (health > 0) return;
+            
+            _animator.SetTrigger(TakeDamage);
 
             KillMouse();
         }
 
         private void KillMouse()
         {
+            _navMeshAgent.speed = 0;
+            
             _animator.SetTrigger(Dead);
                 
             Destroy(gameObject, 5);

@@ -11615,7 +11615,6 @@ MonoBehaviour:
   - {fileID: 2020074973}
   enemyPrefab: {fileID: 4946643526447637083, guid: e70ea55b2b0f80446beadde2250720e8, type: 3}
   winCanvas: {fileID: 625950702}
-  enemyManager: {fileID: 4946643526447637073, guid: e70ea55b2b0f80446beadde2250720e8, type: 3}
 --- !u!4 &903316733
 Transform:
   m_ObjectHideFlags: 0
@@ -27596,5 +27595,9 @@ PrefabInstance:
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
       objectReference: {fileID: 890961685}
+    - target: {fileID: 8996748018646276495, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
