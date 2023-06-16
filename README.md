@@ -7,9 +7,9 @@ FPS Shooter game with a 3rd person camera view for PC
 - Search for suitable 3D models for the player character, enemies, and weapons and animations
     - [x] Player 3d + animations: idle, walk, run, shoot*
     - [x] Enemy 3d + animations: idle, walk, melee*
-    - [ ] Pistol 3d + animations: shoot, reloading
+    - [x] Pistol 3d + animations: shoot, reloading
     - [x] Automatic 3d + animations: shoot, reloading
-    - [ ] Sniper rifle + animations: shoot, reloading
+    - [x] Sniper rifle + animations: shoot, reloading
 
 - Find appropriate textures, images, and animations for the game elements
     - [x] Buttons for main menu
