@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        Time.timeScale = 1;
+        
         foreach (var spawnPoint in spawnPoints)
         {
             var enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
