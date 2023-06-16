@@ -12,8 +12,8 @@ FPS Shooter game with a 3rd person camera view for PC
     - [ ] Sniper rifle + animations: shoot, reloading
 
 - Find appropriate textures, images, and animations for the game elements
-    - [ ] Buttons for main menu
-    - [ ] Background image
+    - [x] Buttons for main menu
+    - [x] Background image
     - [ ] Inventory
     - [ ] Buttons for in game actions: open/close inventory
     - [x] Reloading of weapon
@@ -26,6 +26,6 @@ FPS Shooter game with a 3rd person camera view for PC
 - [x] Shooting mechanic via Raycast
 - [x] Deal damage to enemy
 - [ ] Inventory system w/ 3 weapons & ammo (pistol, full auto, sniper)
-- [ ] Main menu UI (Play/Exit) 
+- [x] Main menu UI (Play/Exit) 
 - [x] Level UI (Win/Lose) -> Show lose screen when player dies, and win screen on enemies defeated
 - [ ] Save system (player progress with win count and lose count) shown after win/lose screen
