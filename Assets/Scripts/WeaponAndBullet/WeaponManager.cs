@@ -3,12 +3,14 @@ using Enemy;
 using InventoryScripts;
 using UI;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace WeaponAndBullet
 {
     public class WeaponManager : MonoBehaviour
     {
         public Gun gunData;
+        public GameObject icon;
 
         private float _fireRateTimer;
 

@@ -17862,6 +17862,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6218970142302082049, guid: 4383a2e5cb59a9a47b88d999c2299e4a, type: 3}
   m_PrefabInstance: {fileID: 1319978994}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1338240149 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8996748017076658262, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+  m_PrefabInstance: {fileID: 8996748016617964933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1341191360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28897,6 +28902,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1230789049712811936, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1338240149}
+    - target: {fileID: 1230789049712811936, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
       objectReference: {fileID: 1973034626}
@@ -28908,6 +28917,30 @@ PrefabInstance:
       propertyPath: weapons.Array.data[2]
       value: 
       objectReference: {fileID: 1502876065}
+    - target: {fileID: 1509645596598051180, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509645596598051180, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: d7a8e04519225a147a54442dcef34e46, type: 2}
+    - target: {fileID: 2885543704814331462, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: damage
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885543704814331462, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 82f331d559eb8c84ba97bc8a07022158, type: 2}
+    - target: {fileID: 3084472941912670954, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 82f331d559eb8c84ba97bc8a07022158, type: 2}
+    - target: {fileID: 5175613246505109584, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: d7a8e04519225a147a54442dcef34e46, type: 2}
     - target: {fileID: 8996748017021243168, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
@@ -28976,5 +29009,13 @@ PrefabInstance:
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
       objectReference: {fileID: 890961685}
+    - target: {fileID: 8996748018646276492, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 034e2265e811a864fb1103f8cee0c549, type: 2}
+    - target: {fileID: 8996748018646276495, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 034e2265e811a864fb1103f8cee0c549, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72020c6c9b739da4ca8526dfdd327c16, type: 3}

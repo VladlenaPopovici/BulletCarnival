@@ -1,21 +1,28 @@
-﻿using UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace WeaponAndBullet
 {
     public class SwitchWeapons : MonoBehaviour
     {
         [HideInInspector] public int selectedWeapon;
-        public GameObject activeWeapon;
-
-        private float _weaponIndicator;
-        [SerializeField] private GameObject[] weapons = new GameObject[3];    
         [SerializeField] private Animator animator;
+
+        private readonly WeaponImagePair[] _weaponsImages = new WeaponImagePair[3]; // TODO change to list
 
         private void Start()
         {
+            InitWeaponsAndImages();
             SelectWeapon();
-            ChangeWeaponUI(0);
+        }
+
+        private void InitWeaponsAndImages()
+        {
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                var weapon = transform.GetChild(i).gameObject;
+                _weaponsImages[i].Weapon = weapon;
+                _weaponsImages[i].Sprite = weapon.GetComponent<WeaponManager>().icon;
+            }
         }
 
         private void Update()
@@ -42,34 +49,28 @@ namespace WeaponAndBullet
             if (previousSelectedWeapon == selectedWeapon) return;
 
             SelectWeapon();
-            ChangeWeaponUI(selectedWeapon);
         }
 
         private void SelectWeapon()
         {
-            for (var i = 0; i < transform.childCount; i++)
+            for (var i = 0; i < _weaponsImages.Length; i++)
             {
-                var weapon = transform.GetChild(i).gameObject;
-
+                var weapon = _weaponsImages[i].Weapon.gameObject;
                 weapon.SetActive(i == selectedWeapon);
-                if (weapon.activeSelf) activeWeapon = weapon;
+                var image = _weaponsImages[i].Sprite.gameObject;
+                image.SetActive(i == selectedWeapon);
             }
-        }
-
-        private void ChangeWeaponUI(int index)
-        {
-            foreach (var t in weapons)
-            {
-                t.gameObject.SetActive(false);
-            }
-            
-            weapons[index].gameObject.SetActive(true);
-            _weaponIndicator = index;
         }
 
         private bool ReloadAnimationInProgress()
         {
             return animator.GetCurrentAnimatorStateInfo(1).IsName("RIfle Reload");
         }
+    }
+
+    public struct WeaponImagePair
+    {
+        internal GameObject Weapon;
+        internal GameObject Sprite;
     }
 }

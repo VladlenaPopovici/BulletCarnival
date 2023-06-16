@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60f53521a0a480c863102d5d0f1b691, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
-  isSemiAuto: 0
-  fireRate: 0
-  icon: {fileID: 0}
-  damage: 0
-  maxClipSize: 0
+  isSemiAuto: 1
+  fireRate: 0.5
+  icon: {fileID: 21300000, guid: 14824c0a0ed35c04aad715aafb2ff31e, type: 3}
+  damage: 90
+  maxClipSize: 5
