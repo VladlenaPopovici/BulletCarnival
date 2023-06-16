@@ -1,17 +1,18 @@
+using InventoryScripts;
 using UnityEngine;
 
 namespace WeaponAndBullet
 {
     public class WeaponAmmo : MonoBehaviour
     {
-        public int clipSize;
+        public Gun gunData;
         public int extraAmmo;
 
         [HideInInspector] public int currentAmmo;
     
         void Start()
         {
-            currentAmmo = clipSize;
+            currentAmmo = gunData.maxClipSize;
         }
 
         private void Update()
@@ -19,21 +20,21 @@ namespace WeaponAndBullet
             if (Input.GetKeyDown(KeyCode.R)) Reload();
         }
 
-        public void Reload()
+        private void Reload()
         {
-            if (extraAmmo >= clipSize)
+            if (extraAmmo >= gunData.maxClipSize)
             {
-                var ammoToReload = clipSize - currentAmmo;
+                var ammoToReload = gunData.maxClipSize - currentAmmo;
                 extraAmmo -= ammoToReload;
                 currentAmmo += ammoToReload;
             }
             else if (extraAmmo > 0)
             {
-                if (extraAmmo + currentAmmo > clipSize)
+                if (extraAmmo + currentAmmo > gunData.maxClipSize)
                 {
-                    var leftOverAmmo = extraAmmo - currentAmmo + clipSize;
+                    var leftOverAmmo = extraAmmo - currentAmmo + gunData.maxClipSize;
                     extraAmmo = leftOverAmmo;
-                    currentAmmo = clipSize;
+                    currentAmmo = gunData.maxClipSize;
                 }
                 else
                 {

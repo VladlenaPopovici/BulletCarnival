@@ -49,6 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedWeapon: 0
   activeWeapon: {fileID: 0}
+  weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8996748016615178835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,6 +3056,10 @@ PrefabInstance:
       propertyPath: damage
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6407884912603901413, guid: 2c11fcd2b4b3ace488c912b6ce8018d4, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 8996748017076658262}
     - target: {fileID: 6407884912603901415, guid: 2c11fcd2b4b3ace488c912b6ce8018d4, type: 3}
       propertyPath: recoilFollowPosition
       value: 
@@ -3132,6 +3140,10 @@ PrefabInstance:
       propertyPath: recoilFollowPosition
       value: 
       objectReference: {fileID: 8996748017911491518}
+    - target: {fileID: 1751725575405028238, guid: 018b19642d070ba468f63e44dd610c6a, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 8996748017076658262}
     - target: {fileID: 2327331254191956379, guid: 018b19642d070ba468f63e44dd610c6a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3246,6 +3258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol_00
       objectReference: {fileID: 0}
+    - target: {fileID: 5924299785353737336, guid: 805c914e459fc544cae01bf9a4cdc2f8, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 8996748017076658262}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 805c914e459fc544cae01bf9a4cdc2f8, type: 3}
 --- !u!4 &7289752568834737799 stripped
