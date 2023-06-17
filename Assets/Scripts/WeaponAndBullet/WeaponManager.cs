@@ -49,13 +49,13 @@ namespace WeaponAndBullet
 
             _fireRateTimer = gunData.fireRate;
             
-            _uiManager.SetAmmo(_weaponAmmo.currentAmmo + "/" + _weaponAmmo.extraAmmo);
+            _uiManager.SetAmmo(_weaponAmmo.currentAmmo + "/" + _weaponAmmo.GetExtraAmmo());
         }
 
         void Update()
         {
             if(ShouldFire()) Fire();
-            _uiManager.SetAmmo(_weaponAmmo.currentAmmo + "/" + _weaponAmmo.extraAmmo);
+            _uiManager.SetAmmo(_weaponAmmo.currentAmmo + "/" + _weaponAmmo.GetExtraAmmo());
 
             _muzzleFlashLight.intensity = Mathf.Lerp(_muzzleFlashLight.intensity, 0, lightReturnSpeed * Time.deltaTime);
             
@@ -80,7 +80,7 @@ namespace WeaponAndBullet
             _weaponRecoil.TriggerRecoil();
             TriggerMuzzleFlash();
             _weaponAmmo.currentAmmo--;
-            _uiManager.SetAmmo(_weaponAmmo.currentAmmo + "/" + _weaponAmmo.extraAmmo);
+            _uiManager.SetAmmo(_weaponAmmo.currentAmmo + "/" + _weaponAmmo.GetExtraAmmo());
 
             if (!Physics.Raycast(barrelPosition.position, transform.forward, out var hit, 100)) return;
 
